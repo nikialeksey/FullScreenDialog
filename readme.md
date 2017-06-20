@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/nikialeksey/FullScreenDialog.svg?branch=master)](https://travis-ci.org/nikialeksey/FullScreenDialog)
+[![BCH compliance](https://bettercodehub.com/edge/badge/nikialeksey/FullScreenDialog?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.org/nikialeksey/FullScreenDialog.svg?branch=master)](https://travis-ci.org/nikialeksey/FullScreenDialog)
