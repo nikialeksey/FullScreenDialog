@@ -30,5 +30,29 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+ext {
+    bintrayRepo = 'android-libraries'
+    bintrayName = 'full-screen-dialog'
+
+    publishedGroupId = 'com.nikialeksey'
+    artifact = 'fullscreendialog'
+    libraryName = 'Full Screen Dialog'
+
+    libraryDescription = 'Android Material full screen dialog library'
+
+    siteUrl = 'https://github.com/nikialeksey/FullScreenDialog'
+    gitUrl = 'https://github.com/nikialeksey/FullScreenDialog.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'nikialeksey'
+    developerName = 'Alexey Nikitin'
+    developerEmail = 'nikialeksey@gmail.com'
+    organization = 'alexey-nikitin'
+    licenseName = 'MIT License'
+    licenseUrl = 'https://github.com/nikialeksey/FullScreenDialog/blob/master/LICENSE'
+    allLicenses = ['MIT']
+
+}
 apply from: 'install.gradle'
 apply from: 'bintray.gradle'

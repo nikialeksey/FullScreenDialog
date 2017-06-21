@@ -1,37 +1,36 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.nikialeksey'
+group = publishedGroupId
 
 install {
     repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                groupId 'com.nikialeksey'
-                artifactId 'fullscreendialog'
+        pom.project {
+            packaging 'aar'
+            groupId publishedGroupId
+            artifactId artifact
 
-                name 'Full Screen Dialog'
-                description 'Android Material full screen dialog library'
-                url 'https://github.com/nikialeksey/FullScreenDialog'
+            name libraryName
+            description libraryDescription
+            url siteUrl
 
-                licenses {
-                    license {
-                        name 'MIT'
-                        url 'https://github.com/nikialeksey/FullScreenDialog/blob/master/LICENSE'
-                    }
+            licenses {
+                license {
+                    name licenseName
+                    url licenseUrl
                 }
-                developers {
-                    developer {
-                        id 'nikialeksey'
-                        name 'Alexey Nikitin'
-                        email 'nikialeksey@gmail.com'
-                    }
+            }
+            developers {
+                developer {
+                    id developerId
+                    name developerName
+                    email developerEmail
                 }
-                scm {
-                    connection 'https://github.com/nikialeksey/FullScreenDialog.git'
-                    developerConnection 'https://github.com/nikialeksey/FullScreenDialog.git'
-                    url 'https://github.com/nikialeksey/FullScreenDialog'
-                }
+            }
+            scm {
+                connection gitUrl
+                developerConnection gitUrl
+                url siteUrl
+
             }
         }
     }
