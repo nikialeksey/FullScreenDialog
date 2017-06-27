@@ -2,14 +2,25 @@ package me.nikialeksey.fullscreendialog;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // @todo #2:30min Remove xml layout
-        setContentView(R.layout.activity_main);
+        final FrameLayout content = new FrameLayout(this);
+        final TextView textView = new TextView(this, null,
+                android.R.style.TextAppearance_Material_Small);
+        textView.setText(R.string.mainSampleText);
+        final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        lp.gravity = Gravity.CENTER;
+        content.addView(textView, lp);
+
+        setContentView(content);
 
         // @todo #1:15min Add full screen dialog showing
     }
