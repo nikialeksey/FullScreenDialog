@@ -1,10 +1,12 @@
-package me.nikialeksey.fullscreendialog;
+package com.nikialeksey.fullscreendialog.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.nikialeksey.fullscreendialog.FsDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(content);
 
-        // @todo #1:15min Add full screen dialog showing
+        new FsDialog(this).show();
     }
 }
