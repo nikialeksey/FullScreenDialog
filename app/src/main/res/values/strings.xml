@@ -2,4 +2,5 @@
     <string name="app_name">Full Screen Dialog</string>
 
     <string name="mainSampleText">This is a sample of Material full screen Dialog</string>
+    <string name="mainFsDialogTitle">Hello Fullscreen!</string>
 </resources>

@@ -24,6 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(content);
 
-        new FsDialog(this).show();
+        new FsDialog(this, getString(R.string.mainFsDialogTitle)).show();
     }
 }

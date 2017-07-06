@@ -1,33 +1,19 @@
 package com.nikialeksey.fullscreendialog;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
+import android.support.annotation.NonNull;
 import android.widget.LinearLayout;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
+@SuppressLint("ViewConstructor")
 public class FsDialogLayout extends LinearLayout {
 
-    public FsDialogLayout(Context context) {
+    public FsDialogLayout(@NonNull final Context context, @NonNull final FsDialogToolbar toolbar) {
         super(context);
-        init();
-    }
-
-    public FsDialogLayout(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    public FsDialogLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    private void init() {
-        addView(new FsDialogToolbar(getContext()),
-                new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        addView(toolbar, new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
     }
 }
