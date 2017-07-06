@@ -3,10 +3,11 @@ package com.nikialeksey.fullscreendialog;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class FsDialogLayout extends LinearLayout {
 
@@ -26,9 +27,7 @@ public class FsDialogLayout extends LinearLayout {
     }
 
     private void init() {
-        // @todo #5:60min Initialize appbar layout
-        final AppBarLayout appBarLayout = new AppBarLayout(getContext());
-        final Toolbar toolbar = new Toolbar(getContext());
-        appBarLayout.addView(toolbar);
+        addView(new FsDialogToolbar(getContext()),
+                new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
     }
 }
