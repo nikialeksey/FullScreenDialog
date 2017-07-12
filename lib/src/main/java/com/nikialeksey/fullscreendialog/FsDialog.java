@@ -13,7 +13,7 @@ import android.view.WindowManager;
 
 public class FsDialog extends AppCompatDialog {
 
-    public FsDialog(@NonNull final Context context, @NonNull final String title) {
+    public FsDialog(@NonNull final Context context, @NonNull final String title, @NonNull final FsDialogCloseAction closeAction) {
         super(context);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -22,7 +22,13 @@ public class FsDialog extends AppCompatDialog {
             throw new IllegalStateException("Non visual activity");
         }
 
-        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title));
+        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title, new FsDialogCloseAction() {
+            @Override
+            public void onClose() {
+                dismiss();
+                closeAction.onClose();
+            }
+        }));
         super.setContentView(root);
 
         window.setBackgroundDrawable(new ColorDrawable(Color.WHITE));

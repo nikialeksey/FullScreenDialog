@@ -7,6 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.nikialeksey.fullscreendialog.FsDialog;
+import com.nikialeksey.fullscreendialog.FsDialogCloseAction;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(content);
 
-        new FsDialog(this, getString(R.string.mainFsDialogTitle)).show();
+        new FsDialog(this, getString(R.string.mainFsDialogTitle), new FsDialogCloseAction() {
+            @Override
+            public void onClose() {
+
+            }
+        }).show();
     }
 }
