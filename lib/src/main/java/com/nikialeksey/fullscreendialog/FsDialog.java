@@ -17,6 +17,7 @@ public class FsDialog extends AppCompatDialog {
                     @NonNull final FsDialogCloseAction closeAction,
                     @NonNull final String actionTitle, @NonNull final FsDialogAction action) {
         super(context);
+        // @todo 10:60min make the system bar and nav bar true color, when dialog is showing
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
         final Window window = getWindow();
