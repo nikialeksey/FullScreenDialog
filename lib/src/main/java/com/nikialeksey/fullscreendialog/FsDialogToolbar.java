@@ -23,6 +23,7 @@ public class FsDialogToolbar extends AppBarLayout {
         super(context);
 
         final Toolbar toolbar = new Toolbar(getContext());
+        // @todo 9:60min Make the toolbar text true color
         toolbar.setTitle(title);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
