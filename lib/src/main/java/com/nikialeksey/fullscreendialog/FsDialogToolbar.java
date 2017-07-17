@@ -27,7 +27,7 @@ public class FsDialogToolbar extends AppBarLayout {
                 fsDialogCloseAction.onClose();
             }
         });
-        // @todo 7:60min Add close icon
+        toolbar.setNavigationIcon(R.drawable.fs_close_icon);
         addView(toolbar, new AppBarLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
     }
 }
