@@ -1,13 +1,17 @@
 package com.nikialeksey.fullscreendialog.sample;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nikialeksey.fullscreendialog.FsDialog;
+import com.nikialeksey.fullscreendialog.FsDialogAction;
 import com.nikialeksey.fullscreendialog.FsDialogCloseAction;
+import com.nikialeksey.fullscreendialog.FsToolbarCloseAction;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         new FsDialog(this, getString(R.string.mainFsDialogTitle), new FsDialogCloseAction() {
             @Override
-            public void onClose() {
+            public void onClose(@NonNull final FsDialog dialog) {
 
+            }
+        }, "Action", new FsDialogAction() {
+            @Override
+            public void onAction(FsDialog dialog) {
+                dialog.dismiss();
+                Toast.makeText(MainActivity.this, "Sample action", Toast.LENGTH_LONG).show();
             }
         }).show();
     }

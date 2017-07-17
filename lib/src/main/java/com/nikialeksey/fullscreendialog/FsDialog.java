@@ -13,7 +13,9 @@ import android.view.WindowManager;
 
 public class FsDialog extends AppCompatDialog {
 
-    public FsDialog(@NonNull final Context context, @NonNull final String title, @NonNull final FsDialogCloseAction closeAction) {
+    public FsDialog(@NonNull final Context context, @NonNull final String title,
+                    @NonNull final FsDialogCloseAction closeAction,
+                    @NonNull final String actionTitle, @NonNull final FsDialogAction action) {
         super(context);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -22,11 +24,16 @@ public class FsDialog extends AppCompatDialog {
             throw new IllegalStateException("Non visual activity");
         }
 
-        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title, new FsDialogCloseAction() {
+        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title, new FsToolbarCloseAction() {
             @Override
             public void onClose() {
                 dismiss();
-                closeAction.onClose();
+                closeAction.onClose(FsDialog.this);
+            }
+        }, actionTitle, new FsToolbarAction() {
+            @Override
+            public void onAction() {
+                action.onAction(FsDialog.this);
             }
         }));
         super.setContentView(root);
