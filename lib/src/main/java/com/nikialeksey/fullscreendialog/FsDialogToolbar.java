@@ -16,14 +16,14 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 public class FsDialogToolbar extends AppBarLayout {
 
     public FsDialogToolbar(@NonNull final Context context, @NonNull final String title,
-                           // @todo 8:30min Think about close action (may be bad idea)
+                           // @todo #8:30m Think about close action (may be bad idea)
                            @NonNull final FsToolbarCloseAction closeAction,
                            @NonNull final String actionTitle,
                            @NonNull final FsToolbarAction action) {
         super(context);
 
         final Toolbar toolbar = new Toolbar(getContext());
-        // @todo 9:60min Make the toolbar text true color
+        // @todo #9:60m Make the toolbar text true color
         toolbar.setTitle(title);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
