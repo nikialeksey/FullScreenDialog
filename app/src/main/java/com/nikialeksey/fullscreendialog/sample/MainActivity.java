@@ -1,8 +1,8 @@
 package com.nikialeksey.fullscreendialog.sample;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,7 +12,8 @@ import android.widget.Toast;
 import com.nikialeksey.fullscreendialog.FsDialog;
 import com.nikialeksey.fullscreendialog.FsDialogAction;
 import com.nikialeksey.fullscreendialog.FsDialogCloseAction;
-import com.nikialeksey.fullscreendialog.FsToolbarCloseAction;
+
+import static android.graphics.Color.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textView = new TextView(this, null,
                 android.R.style.TextAppearance_Material_Small);
+        textView.setTextColor(BLACK);
         textView.setText(R.string.mainSampleText);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

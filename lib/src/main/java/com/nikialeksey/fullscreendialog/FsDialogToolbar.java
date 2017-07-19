@@ -3,11 +3,16 @@ package com.nikialeksey.fullscreendialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.nikialeksey.fullscreendialog.theme.Color;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -21,17 +26,21 @@ public class FsDialogToolbar extends AppBarLayout {
                            @NonNull final String actionTitle,
                            @NonNull final FsToolbarAction action) {
         super(context);
+        final Color textColorPrimary = new Color(context, android.R.attr.textColorPrimary);
 
         final Toolbar toolbar = new Toolbar(getContext());
-        // @todo #9:60m Make the toolbar text true color
         toolbar.setTitle(title);
+        toolbar.setTitleTextColor(textColorPrimary.intValue());
         toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 closeAction.onClose();
             }
         });
-        toolbar.setNavigationIcon(R.drawable.fs_close_icon);
+
+        final Drawable closeIcon = ContextCompat.getDrawable(context, R.drawable.fs_close_icon);
+        closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
+        toolbar.setNavigationIcon(closeIcon);
 
         toolbar.getMenu()
                 .add(actionTitle)
