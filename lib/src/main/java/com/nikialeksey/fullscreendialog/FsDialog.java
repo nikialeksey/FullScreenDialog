@@ -27,7 +27,7 @@ public class FsDialog extends AppCompatDialog {
             throw new IllegalStateException("Non visual activity");
         }
 
-        // @todo #12:30m Add popup animation like bottom sheet
+        window.setWindowAnimations(R.style.FsDialogAnimation);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
