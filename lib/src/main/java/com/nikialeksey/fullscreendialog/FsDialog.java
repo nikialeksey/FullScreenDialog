@@ -16,6 +16,7 @@ import com.nikialeksey.fullscreendialog.theme.Color;
 
 public class FsDialog extends AppCompatDialog {
 
+    // @todo #13:30m Add content view
     public FsDialog(@NonNull final Context context, @StyleRes int appThemeId,
                     @NonNull final String title, @NonNull final FsDialogCloseAction closeAction,
                     @NonNull final String actionTitle, @NonNull final FsDialogAction action) {
