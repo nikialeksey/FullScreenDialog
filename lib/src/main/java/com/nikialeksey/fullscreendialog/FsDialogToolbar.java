@@ -7,7 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,10 +38,11 @@ public class FsDialogToolbar extends AppBarLayout {
             }
         });
 
-        final Drawable closeIcon = ContextCompat.getDrawable(context, R.drawable.fs_close_icon);
+        final Drawable closeIcon = AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
         closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
         toolbar.setNavigationIcon(closeIcon);
 
+        // @todo 17:30m Fix actionTitle color for API 16
         toolbar.getMenu()
                 .add(actionTitle)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
