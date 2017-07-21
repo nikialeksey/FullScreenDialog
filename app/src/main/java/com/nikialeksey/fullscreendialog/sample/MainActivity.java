@@ -1,5 +1,6 @@
 package com.nikialeksey.fullscreendialog.sample;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,19 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FsDialog(MainActivity.this, R.style.AppTheme, getString(R.string.mainFsDialogTitle), new FsDialogCloseAction() {
+                final Context context = MainActivity.this;
+                final TextView contentText = new TextView(context, null,
+                        android.R.style.TextAppearance_Material_Small);
+                contentText.setTextColor(BLACK);
+                contentText.setText(R.string.mainFsDialogContentText);
+
+                final FrameLayout content = new FrameLayout(context);
+                final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                lp.gravity = Gravity.CENTER;
+                content.addView(contentText, lp);
+
+                new FsDialog(context, R.style.AppTheme, getString(R.string.mainFsDialogTitle), new FsDialogCloseAction() {
                     @Override
                     public void onClose(@NonNull final FsDialog dialog) {
 
@@ -38,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAction(FsDialog dialog) {
                         dialog.dismiss();
-                        Toast.makeText(MainActivity.this, "Sample action", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Sample action", Toast.LENGTH_LONG).show();
                     }
-                }).show();
+                }, content).show();
             }
         });
 

@@ -57,7 +57,7 @@ public class FsDialogTest {
                             dialog.dismiss();
                             wasDialogAction = true;
                         }
-                    }).show();
+                    }, new FrameLayout(FsDialogTestActivity.this)).show();
                 }
             });
 
