@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, "Action", new FsDialogAction() {
                     @Override
-                    public void onAction(FsDialog dialog) {
+                    public void onAction(@NonNull final FsDialog dialog) {
                         dialog.dismiss();
                         Toast.makeText(context, "Sample action", Toast.LENGTH_LONG).show();
                     }
