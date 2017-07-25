@@ -4,6 +4,7 @@
 [![0pdd](http://www.0pdd.com/svg?name=nikialeksey/FullScreenDialog)](http://www.0pdd.com/p?name=nikialeksey/FullScreenDialog)
 
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![Download](https://api.bintray.com/packages/pidra/maven/full-screen-dialog/images/download.svg)](https://bintray.com/pidra/maven/full-screen-dialog/_latestVersion)
 
 # FullScreenDialog
 Implementation of [full-screen-dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-full-screen-dialogs) 
