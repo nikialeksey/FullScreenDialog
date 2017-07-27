@@ -6,6 +6,7 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/5979d857368b080066d28d11/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5979d857368b080066d28d11)
 [![0pdd](http://www.0pdd.com/svg?name=nikialeksey/FullScreenDialog)](http://www.0pdd.com/p?name=nikialeksey/FullScreenDialog)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/FullScreenDialog/blob/master/LICENSE)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![Download](https://api.bintray.com/packages/pidra/maven/full-screen-dialog/images/download.svg)](https://bintray.com/pidra/maven/full-screen-dialog/_latestVersion)
 
