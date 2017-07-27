@@ -13,6 +13,21 @@
 Implementation of [full-screen-dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-full-screen-dialogs) 
 from material guidelines.
 
+### Add to project
+```gradle
+repositories {
+    jcenter()
+}
+
+dependencies {
+    ...
+    compile('com.nikialeksey:fullscreendialog:<lates version>@aar') {
+        transitive true
+    }
+    ...
+}
+```
+
 ### Usage
 ```java
 new FsDialog(context, R.style.AppTheme, "Title", new FsDialogCloseAction() {
