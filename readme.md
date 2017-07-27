@@ -1,7 +1,9 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/nikialeksey/FullScreenDialog?branch=master)](https://bettercodehub.com/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/94dcc0c5d12d4c2d9aba648f0d705f60)](https://www.codacy.com/app/nikialeksey/FullScreenDialog?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nikialeksey/FullScreenDialog&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/nikialeksey/FullScreenDialog.svg?branch=master)](https://travis-ci.org/nikialeksey/FullScreenDialog)
+[![codebeat badge](https://codebeat.co/badges/c0fcacc7-3aac-4c7b-8283-aa8f9e284e81)](https://codebeat.co/projects/github-com-nikialeksey-fullscreendialog-master)
 [![codecov](https://codecov.io/gh/nikialeksey/FullScreenDialog/branch/master/graph/badge.svg)](https://codecov.io/gh/nikialeksey/FullScreenDialog)
+[![Build Status](https://travis-ci.org/nikialeksey/FullScreenDialog.svg?branch=master)](https://travis-ci.org/nikialeksey/FullScreenDialog)
+[![Dependency Status](https://www.versioneye.com/user/projects/5979d857368b080066d28d11/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5979d857368b080066d28d11)
 [![0pdd](http://www.0pdd.com/svg?name=nikialeksey/FullScreenDialog)](http://www.0pdd.com/p?name=nikialeksey/FullScreenDialog)
 
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
