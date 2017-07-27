@@ -14,6 +14,8 @@
 Implementation of [full-screen-dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-full-screen-dialogs) 
 from material guidelines.
 
+![Video description](https://github.com/nikialeksey/FullScreenDialog/blob/master/gifs/main.gif)
+
 ### Add to project
 ```gradle
 repositories {
