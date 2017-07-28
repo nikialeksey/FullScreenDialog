@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     ...
-    compile('com.nikialeksey:fullscreendialog:<lates version>@aar') {
+    compile('com.nikialeksey:fullscreendialog:<latest version>@aar') {
         transitive true
     }
     ...
