@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -18,6 +19,8 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -67,6 +70,13 @@ public class FsDialogTest {
 
     @Rule
     public ActivityTestRule<FsDialogTestActivity> rule = new ActivityTestRule<>(FsDialogTestActivity.class);
+
+    @Test
+    public void showFsDialog() {
+        onView(withText("show")).perform(click());
+
+        onView(withText("Dialog Title")).check(matches(isDisplayed()));
+    }
 
     @Test
     public void actionClicked() {
