@@ -42,7 +42,7 @@ public class FsDialogToolbar extends AppBarLayout {
         closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
         toolbar.setNavigationIcon(closeIcon);
 
-        // @todo 17:30m Fix actionTitle color for API 16
+        // @todo #17:30m Fix actionTitle color for API 16
         toolbar.getMenu()
                 .add(actionTitle)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)

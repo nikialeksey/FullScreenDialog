@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.widget.AppCompatImageButton;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -26,6 +28,7 @@ public class FsDialogTest {
     public static class FsDialogTestActivity extends Activity {
 
         public boolean wasDialogAction = false;
+        public boolean wasDialogClose = false;
 
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class FsDialogTest {
                     new FsDialog(FsDialogTestActivity.this, R.style.Theme_AppCompat, "Dialog Title", new FsDialogCloseAction() {
                         @Override
                         public void onClose(@NonNull final FsDialog dialog) {
-
+                            wasDialogClose = true;
                         }
                     }, "Action", new FsDialogAction() {
                         @Override
@@ -71,5 +74,14 @@ public class FsDialogTest {
         onView(withText("Action")).perform(click());
 
         assertThat(rule.getActivity().wasDialogAction, is(true));
+    }
+
+    @Test
+    public void closeClicked() {
+        onView(withText("show")).perform(click());
+        // @todo #18:30m Bad to use class name matcher. Need configure close button in FsDialog constructor
+        onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(click());
+
+        assertThat(rule.getActivity().wasDialogClose, is(true));
     }
 }

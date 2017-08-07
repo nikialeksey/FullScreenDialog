@@ -16,7 +16,6 @@ import com.nikialeksey.fullscreendialog.theme.Color;
 
 public class FsDialog extends AppCompatDialog {
 
-    // @todo #15:30m Write espresso test close
     // @todo #16:30m Write espresso test showing
     public FsDialog(@NonNull final Context context, @StyleRes int appThemeId,
                     @NonNull final String title, @NonNull final FsDialogCloseAction closeAction,
