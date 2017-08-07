@@ -20,8 +20,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 @SuppressLint("ViewConstructor")
 public class FsDialogToolbar extends AppBarLayout {
 
+    // @todo #19:30m Add close button instead close action
     public FsDialogToolbar(@NonNull final Context context, @NonNull final String title,
-                           // @todo #8:30m Think about close action (may be bad idea)
                            @NonNull final FsToolbarCloseAction closeAction,
                            @NonNull final String actionTitle,
                            @NonNull final FsToolbarAction action) {
@@ -31,16 +31,16 @@ public class FsDialogToolbar extends AppBarLayout {
         final Toolbar toolbar = new Toolbar(getContext());
         toolbar.setTitle(title);
         toolbar.setTitleTextColor(textColorPrimary.intValue());
+
+        final Drawable closeIcon = AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
+        closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
+        toolbar.setNavigationIcon(closeIcon);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 closeAction.onClose();
             }
         });
-
-        final Drawable closeIcon = AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
-        closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
-        toolbar.setNavigationIcon(closeIcon);
 
         // @todo #17:30m Fix actionTitle color for API 16
         toolbar.getMenu()
