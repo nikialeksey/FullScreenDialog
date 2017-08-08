@@ -2,11 +2,14 @@ package com.nikialeksey.fullscreendialog;
 
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatDialog;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -16,8 +19,9 @@ import com.nikialeksey.fullscreendialog.theme.Color;
 
 public class FsDialog extends AppCompatDialog {
 
+    // @todo #20:30m change action to action button
     public FsDialog(@NonNull final Context context, @StyleRes int appThemeId,
-                    @NonNull final String title, @NonNull final FsDialogCloseAction closeAction,
+                    @NonNull final String title, @NonNull final FsCloseButton fsCloseButton,
                     @NonNull final String actionTitle, @NonNull final FsDialogAction action,
                     @NonNull final View content) {
         super(context, appThemeId);
@@ -35,13 +39,8 @@ public class FsDialog extends AppCompatDialog {
             window.setStatusBarColor(new Color(getContext(), R.attr.colorPrimaryDark).intValue());
         }
 
-        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title, new FsToolbarCloseAction() {
-            @Override
-            public void onClose() {
-                dismiss();
-                closeAction.onClose(FsDialog.this);
-            }
-        }, actionTitle, new FsToolbarAction() {
+        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title,
+            fsCloseButton, actionTitle, new FsToolbarAction() {
             @Override
             public void onAction() {
                 action.onAction(FsDialog.this);

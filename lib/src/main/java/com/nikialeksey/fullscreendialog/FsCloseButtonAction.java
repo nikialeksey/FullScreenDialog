@@ -1,6 +1,6 @@
 package com.nikialeksey.fullscreendialog;
 
 
-public interface FsToolbarCloseAction {
+public interface FsCloseButtonAction {
     void onClose();
 }
