@@ -5,9 +5,7 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.test.espresso.Espresso;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -17,7 +15,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.nikialeksey.fullscreendialog.theme.Color;
 import org.junit.Rule;
 import org.junit.Test;
@@ -55,22 +52,35 @@ public class FsDialogTest {
                     final Color textColorPrimary = new Color(context, android.R.attr.textColorPrimary);
                     final Drawable closeIcon = AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
                     closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
-                    final FsCloseButton fsCloseButton = new FsCloseButton(closeIcon, new FsCloseButtonAction() {
+                    final FsCloseButton fsCloseButton = new FsCloseButton(closeIcon, new FsButtonClick() {
                         @Override
-                        public void onClose() {
-                            Toast.makeText(context, "Close action", Toast.LENGTH_LONG).show();
+                        public void onClick() {
                             wasDialogClose = true;
                         }
                     });
 
-                    new FsDialog(FsDialogTestActivity.this, R.style.Theme_AppCompat, "Dialog Title",
-                        fsCloseButton, "Action", new FsDialogAction() {
-                        @Override
-                        public void onAction(FsDialog dialog) {
-                            dialog.dismiss();
-                            wasDialogAction = true;
-                        }
-                    }, new FrameLayout(FsDialogTestActivity.this)).show();
+                    final FsActionButton fsActionButton =
+                        new FsActionButton("Action", new FsButtonClick() {
+                            @Override
+                            public void onClick() {
+                                wasDialogAction = true;
+                            }
+                        });
+
+                    new FsDialog(
+                        context,
+                        R.style.Theme_AppCompat,
+                        new FsDialogLayout(
+                            context,
+                            new FsDialogToolbar(
+                                context,
+                                "Dialog Title",
+                                fsCloseButton,
+                                fsActionButton
+                            ),
+                            new FrameLayout(FsDialogTestActivity.this)
+                        )
+                    ).show();
                 }
             });
 

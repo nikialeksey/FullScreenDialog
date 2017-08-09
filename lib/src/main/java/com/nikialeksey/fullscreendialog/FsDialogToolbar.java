@@ -22,8 +22,7 @@ public class FsDialogToolbar extends AppBarLayout {
 
     public FsDialogToolbar(@NonNull final Context context, @NonNull final String title,
                            @NonNull final FsCloseButton fsCloseButton,
-                           @NonNull final String actionTitle,
-                           @NonNull final FsToolbarAction action) {
+                           @NonNull final FsActionButton fsActionButton) {
         super(context);
         final Color textColorPrimary = new Color(context, android.R.attr.textColorPrimary);
 
@@ -32,18 +31,7 @@ public class FsDialogToolbar extends AppBarLayout {
         toolbar.setTitleTextColor(textColorPrimary.intValue());
 
         fsCloseButton.addInToolbar(toolbar);
-
-        // @todo #17:30m Fix actionTitle color for API 16
-        toolbar.getMenu()
-                .add(actionTitle)
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                action.onAction();
-                return true;
-            }
-        });
+        fsActionButton.addInToolbar(toolbar);
 
         addView(toolbar, new AppBarLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
     }

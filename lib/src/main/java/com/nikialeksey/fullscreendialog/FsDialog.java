@@ -19,11 +19,8 @@ import com.nikialeksey.fullscreendialog.theme.Color;
 
 public class FsDialog extends AppCompatDialog {
 
-    // @todo #20:30m change action to action button
     public FsDialog(@NonNull final Context context, @StyleRes int appThemeId,
-                    @NonNull final String title, @NonNull final FsCloseButton fsCloseButton,
-                    @NonNull final String actionTitle, @NonNull final FsDialogAction action,
-                    @NonNull final View content) {
+                    @NonNull final FsDialogLayout fsDialogLayout) {
         super(context, appThemeId);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -39,14 +36,7 @@ public class FsDialog extends AppCompatDialog {
             window.setStatusBarColor(new Color(getContext(), R.attr.colorPrimaryDark).intValue());
         }
 
-        final View root = new FsDialogLayout(context, new FsDialogToolbar(context, title,
-            fsCloseButton, actionTitle, new FsToolbarAction() {
-            @Override
-            public void onAction() {
-                action.onAction(FsDialog.this);
-            }
-        }), content);
-        super.setContentView(root);
+        super.setContentView(fsDialogLayout);
 
         window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.WHITE));
         window.setGravity(Gravity.CENTER);

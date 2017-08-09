@@ -8,9 +8,9 @@ import android.view.View;
 public class FsCloseButton {
 
     private final Drawable icon;
-    private final FsCloseButtonAction action;
+    private final FsButtonClick action;
 
-    public FsCloseButton(@NonNull final Drawable icon, @NonNull final FsCloseButtonAction action) {
+    public FsCloseButton(@NonNull final Drawable icon, @NonNull final FsButtonClick action) {
         this.icon = icon;
         this.action = action;
     }
@@ -20,7 +20,7 @@ public class FsCloseButton {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action.onClose();
+                action.onClick();
             }
         });
     }

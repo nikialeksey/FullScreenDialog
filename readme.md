@@ -40,7 +40,7 @@ new FsDialog(context, R.style.AppTheme, "Title", new FsDialogCloseAction() {
     }
 }, "Action Title", new FsDialogAction() {
     @Override
-    public void onAction(@NonNull final FsDialog dialog) {
+    public void onClick(@NonNull final FsDialog dialog) {
 //  base action        
     }
 }, contentView).show();
