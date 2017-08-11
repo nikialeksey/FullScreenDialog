@@ -13,10 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.nikialeksey.fullscreendialog.ClickListener;
 import com.nikialeksey.fullscreendialog.DismissOnCloseDialog;
-import com.nikialeksey.fullscreendialog.FsActionButton;
-import com.nikialeksey.fullscreendialog.FsCloseButton;
+import com.nikialeksey.fullscreendialog.FsDialog;
 import com.nikialeksey.fullscreendialog.FsDialogToolbar;
-import com.nikialeksey.fullscreendialog.SimpleFsDialog;
+import com.nikialeksey.fullscreendialog.buttons.FsActionButton;
+import com.nikialeksey.fullscreendialog.buttons.FsCloseButton;
+import com.nikialeksey.fullscreendialog.buttons.SimpleButton;
 import com.nikialeksey.fullscreendialog.theme.Color;
 
 import static android.graphics.Color.BLACK;
@@ -54,19 +55,19 @@ public class MainActivity extends AppCompatActivity {
                 closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
 
                 // @todo #22:30m Add dismiss on action click decorator
-                new DismissOnCloseDialog(new SimpleFsDialog(context, R.style.AppTheme,
+                new DismissOnCloseDialog(new FsDialog(context, R.style.AppTheme,
                     new FsDialogToolbar(context, getString(R.string.mainFsDialogTitle),
-                        new FsCloseButton(closeIcon, new ClickListener() {
+                        new FsCloseButton(new SimpleButton(new ClickListener() {
                             @Override
                             public void onClick() {
                                 Toast.makeText(context, "Close", Toast.LENGTH_LONG).show();
                             }
-                        }), new FsActionButton("Action", new ClickListener() {
+                        }), closeIcon), new FsActionButton(new SimpleButton(new ClickListener() {
                         @Override
                         public void onClick() {
                             Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
                         }
-                    })), content)).show();
+                    }), "Action")), content)).show();
             }
         });
 

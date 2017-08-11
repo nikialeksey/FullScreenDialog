@@ -1,10 +1,12 @@
 package com.nikialeksey.fullscreendialog;
 
-public class DismissOnCloseDialog implements FsDialog {
+import android.support.annotation.NonNull;
 
-    private final FsDialog origin;
+public class DismissOnCloseDialog implements Dialog {
 
-    public DismissOnCloseDialog(final FsDialog origin) {
+    private final Dialog origin;
+
+    public DismissOnCloseDialog(@NonNull final Dialog origin) {
         this.origin = origin;
         origin.addOnClose(new ClickListener() {
             @Override
@@ -20,7 +22,7 @@ public class DismissOnCloseDialog implements FsDialog {
     }
 
     @Override
-    public void addOnClose(final ClickListener click) {
+    public void addOnClose(@NonNull final ClickListener click) {
         origin.addOnClose(click);
     }
 
