@@ -3,15 +3,21 @@ package com.nikialeksey.fullscreendialog;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FsActionButton {
+public class FsActionButton implements Button {
 
     private final String title;
-    private final FsButtonClick action;
+    private final List<ClickListener> clickListeners = new ArrayList<>();
 
-    public FsActionButton(@NonNull final String title, @NonNull final FsButtonClick action) {
+    public FsActionButton(final String title) {
         this.title = title;
-        this.action = action;
+    }
+
+    public FsActionButton(@NonNull final String title, @NonNull final ClickListener action) {
+        this(title);
+        this.clickListeners.add(action);
     }
 
     // @todo #21:30m May be Toolbarable interface?
@@ -23,9 +29,16 @@ public class FsActionButton {
             .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    action.onClick();
+                    for (final ClickListener clickListener : clickListeners) {
+                        clickListener.onClick();
+                    }
                     return true;
                 }
             });
+    }
+
+    @Override
+    public void addOnClick(final ClickListener clickListener) {
+        this.clickListeners.add(clickListener);
     }
 }

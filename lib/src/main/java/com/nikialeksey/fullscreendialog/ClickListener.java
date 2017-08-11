@@ -1,5 +1,5 @@
 package com.nikialeksey.fullscreendialog;
 
-public interface FsButtonClick {
+public interface ClickListener {
     void onClick();
 }

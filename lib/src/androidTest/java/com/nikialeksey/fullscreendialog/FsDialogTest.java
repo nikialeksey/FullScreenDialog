@@ -49,43 +49,31 @@ public class FsDialogTest {
                 public void onClick(View v) {
                     final Context context = FsDialogTestActivity.this;
 
-                    final Color textColorPrimary = new Color(context, android.R.attr.textColorPrimary);
-                    final Drawable closeIcon = AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
+                    final Color textColorPrimary =
+                        new Color(context, android.R.attr.textColorPrimary);
+                    final Drawable closeIcon =
+                        AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
                     closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
-                    final FsCloseButton fsCloseButton = new FsCloseButton(closeIcon, new FsButtonClick() {
-                        @Override
-                        public void onClick() {
-                            wasDialogClose = true;
-                        }
-                    });
 
-                    final FsActionButton fsActionButton =
-                        new FsActionButton("Action", new FsButtonClick() {
+                    new SimpleFsDialog(context, R.style.Theme_AppCompat,
+                        new FsDialogToolbar(context, "Dialog Title",
+                            new FsCloseButton(closeIcon, new ClickListener() {
+                                @Override
+                                public void onClick() {
+                                    wasDialogClose = true;
+                                }
+                            }), new FsActionButton("Action", new ClickListener() {
                             @Override
                             public void onClick() {
                                 wasDialogAction = true;
                             }
-                        });
-
-                    new FsDialog(
-                        context,
-                        R.style.Theme_AppCompat,
-                        new FsDialogLayout(
-                            context,
-                            new FsDialogToolbar(
-                                context,
-                                "Dialog Title",
-                                fsCloseButton,
-                                fsActionButton
-                            ),
-                            new FrameLayout(FsDialogTestActivity.this)
-                        )
-                    ).show();
+                        })), new FrameLayout(FsDialogTestActivity.this)).show();
                 }
             });
 
-            final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            final FrameLayout.LayoutParams lp =
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT);
             lp.gravity = Gravity.CENTER;
             content.addView(textView, lp);
 
@@ -94,7 +82,8 @@ public class FsDialogTest {
     }
 
     @Rule
-    public ActivityTestRule<FsDialogTestActivity> rule = new ActivityTestRule<>(FsDialogTestActivity.class);
+    public ActivityTestRule<FsDialogTestActivity> rule =
+        new ActivityTestRule<>(FsDialogTestActivity.class);
 
     @Test
     public void showFsDialog() {
@@ -115,7 +104,8 @@ public class FsDialogTest {
     public void closeClicked() {
         onView(withText("show")).perform(click());
         // @todo #18:30m Bad to use class name matcher. Need configure close button in FsDialog constructor
-        onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(click());
+        onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(
+            click());
 
         assertThat(rule.getActivity().wasDialogClose, is(true));
     }
