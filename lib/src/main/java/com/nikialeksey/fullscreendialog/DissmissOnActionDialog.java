@@ -2,13 +2,13 @@ package com.nikialeksey.fullscreendialog;
 
 import android.support.annotation.NonNull;
 
-public class DismissOnCloseDialog implements Dialog {
+public class DissmissOnActionDialog implements Dialog {
 
     private final Dialog origin;
 
-    public DismissOnCloseDialog(@NonNull final Dialog origin) {
+    public DissmissOnActionDialog(@NonNull final Dialog origin) {
         this.origin = origin;
-        this.origin.addOnClose(new ClickListener() {
+        this.origin.addOnAction(new ClickListener() {
             @Override
             public void onClick() {
                 dismiss();

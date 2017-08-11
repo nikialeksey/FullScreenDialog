@@ -58,4 +58,9 @@ public class FsDialog extends AppCompatDialog implements Dialog {
     public void addOnClose(@NonNull final ClickListener clickListener) {
         toolbar.addOnClose(clickListener);
     }
+
+    @Override
+    public void addOnAction(@NonNull final ClickListener clickListener) {
+        toolbar.addOnAction(clickListener);
+    }
 }

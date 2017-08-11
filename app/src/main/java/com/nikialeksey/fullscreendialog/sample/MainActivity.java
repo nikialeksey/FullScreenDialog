@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.nikialeksey.fullscreendialog.ClickListener;
 import com.nikialeksey.fullscreendialog.DismissOnCloseDialog;
+import com.nikialeksey.fullscreendialog.DissmissOnActionDialog;
 import com.nikialeksey.fullscreendialog.FsDialog;
 import com.nikialeksey.fullscreendialog.FsDialogToolbar;
 import com.nikialeksey.fullscreendialog.buttons.FsActionButton;
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
 
                 // @todo #22:30m Add dismiss on action click decorator
-                new DismissOnCloseDialog(new FsDialog(context, R.style.AppTheme,
+                new DissmissOnActionDialog(
+                    new DismissOnCloseDialog(new FsDialog(context, R.style.AppTheme,
                     new FsDialogToolbar(context, getString(R.string.mainFsDialogTitle),
                         new FsCloseButton(new SimpleButton(new ClickListener() {
                             @Override
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick() {
                             Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
                         }
-                    }), "Action")), content)).show();
+                    }), "Action")), content))).show();
             }
         });
 

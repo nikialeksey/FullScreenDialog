@@ -14,13 +14,15 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 @SuppressLint("ViewConstructor")
 public class FsDialogToolbar extends AppBarLayout {
 
-    private final ToolbarButton fsCloseButton;
+    private final ToolbarButton closeButton;
+    private final ToolbarButton actionButton;
 
     public FsDialogToolbar(@NonNull final Context context, @NonNull final String title,
                            @NonNull final ToolbarButton closeButton,
                            @NonNull final ToolbarButton actionButton) {
         super(context);
-        this.fsCloseButton = closeButton;
+        this.closeButton = closeButton;
+        this.actionButton = actionButton;
 
         final Color textColorPrimary = new Color(context, android.R.attr.textColorPrimary);
 
@@ -35,6 +37,10 @@ public class FsDialogToolbar extends AppBarLayout {
     }
 
     public void addOnClose(@NonNull final ClickListener clickListener) {
-        fsCloseButton.addOnClick(clickListener);
+        closeButton.addOnClick(clickListener);
+    }
+
+    public void addOnAction(@NonNull final ClickListener clickListener) {
+        actionButton.addOnClick(clickListener);
     }
 }
