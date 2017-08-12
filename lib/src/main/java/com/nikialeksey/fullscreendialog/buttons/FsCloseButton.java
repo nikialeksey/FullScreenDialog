@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import com.nikialeksey.fullscreendialog.ClickListener;
 
 public class FsCloseButton implements Button, ToolbarButton {
@@ -21,7 +22,7 @@ public class FsCloseButton implements Button, ToolbarButton {
         toolbar.setNavigationIcon(icon);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(@NonNull final View v) {
                 origin.click();
             }
         });

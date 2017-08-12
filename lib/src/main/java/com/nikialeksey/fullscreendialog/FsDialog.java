@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import com.nikialeksey.fullscreendialog.theme.Color;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static android.widget.LinearLayout.VERTICAL;
+import com.nikialeksey.fullscreendialog.theme.Color;
 
 public class FsDialog extends AppCompatDialog implements Dialog {
 
@@ -41,10 +38,12 @@ public class FsDialog extends AppCompatDialog implements Dialog {
         }
 
         final LinearLayout dialogLayout = new LinearLayout(context);
-        dialogLayout.setOrientation(VERTICAL);
+        dialogLayout.setOrientation(LinearLayout.VERTICAL);
 
-        dialogLayout.addView(toolbar, new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        dialogLayout.addView(content, new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+        int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
+        int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
+        dialogLayout.addView(toolbar, new LinearLayout.LayoutParams(matchParent, wrapContent));
+        dialogLayout.addView(content, new LinearLayout.LayoutParams(matchParent, matchParent));
 
         super.setContentView(dialogLayout);
 

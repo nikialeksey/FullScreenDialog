@@ -3,6 +3,7 @@ package com.nikialeksey.fullscreendialog.buttons;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
 import com.nikialeksey.fullscreendialog.ClickListener;
 
 public class FsActionButton implements Button, ToolbarButton {
@@ -10,7 +11,7 @@ public class FsActionButton implements Button, ToolbarButton {
     private final String title;
     private final Button origin;
 
-    public FsActionButton(@NonNull Button origin, @NonNull final String title) {
+    public FsActionButton(@NonNull final Button origin, @NonNull final String title) {
         this.origin = origin;
         this.title = title;
     }
@@ -23,7 +24,7 @@ public class FsActionButton implements Button, ToolbarButton {
             .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
             .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
-                public boolean onMenuItemClick(MenuItem item) {
+                public boolean onMenuItemClick(@NonNull final MenuItem item) {
                     origin.click();
                     return true;
                 }
