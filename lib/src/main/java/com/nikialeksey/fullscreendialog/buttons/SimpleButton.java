@@ -9,6 +9,9 @@ public class SimpleButton implements Button {
 
     private final List<ClickListener> clickListeners = new ArrayList<>();
 
+    public SimpleButton() {
+    }
+
     public SimpleButton(@NonNull final ClickListener clickListener) {
         addOnClick(clickListener);
     }
