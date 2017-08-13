@@ -33,15 +33,29 @@ dependencies {
 
 ### Usage
 ```java
-new FsDialog(context, R.style.AppTheme, "Title", new FsDialogCloseAction() {
-    @Override
-    public void onClose(@NonNull final FsDialog dialog) {
-// close action
-    }
-}, "Action Title", new FsDialogAction() {
-    @Override
-    public void onClick(@NonNull final FsDialog dialog) {
-//  base action        
-    }
-}, contentView).show();
+new DissmissOnActionDialog(
+    new DismissOnCloseDialog(
+        new FsDialog(
+            context, 
+            R.style.AppTheme,
+            new FsDialogToolbar(context, getString(R.string.mainFsDialogTitle),
+                new FsCloseButton(
+                    new SimpleButton(
+                        new ClickListener() {
+                            @Override
+                            public void onClick() {
+                                Toast.makeText(context, "Close", Toast.LENGTH_LONG).show();
+                            }
+                        }), 
+                        closeIcon),
+                new FsActionButton(
+                    new SimpleButton(
+                        new ClickListener() {
+                            @Override
+                            public void onClick() {
+                                Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
+                            }
+                        }), 
+                        "Action")), 
+            content))).show();
 ```

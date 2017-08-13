@@ -56,7 +56,8 @@ public class FsDialogTest {
     @Test
     public void closeClicked() {
         onView(withText("show")).perform(click());
-        // @todo #18:30m Bad to use class name matcher. Need configure close button in FsDialog constructor
+        // @todo #18:30m Bad to use class name matcher. Need configure close button in
+        // FsDialog constructor
         onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(
             click());
 

@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     AppCompatResources.getDrawable(context, R.drawable.fs_close_icon);
                 closeIcon.setColorFilter(textColorPrimary.intValue(), PorterDuff.Mode.SRC_IN);
 
-                // @todo #22:30m Add dismiss on action click decorator
                 new DissmissOnActionDialog(new DismissOnCloseDialog(
                     new FsDialog(context, R.style.AppTheme,
                         new FsDialogToolbar(context, getString(R.string.mainFsDialogTitle),

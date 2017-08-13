@@ -26,19 +26,7 @@ public class FsDialog extends AppCompatDialog implements Dialog {
         super(context, appThemeId);
         this.toolbar = toolbar;
 
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        final Window window = getWindow();
-        if (window == null) {
-            throw new IllegalStateException("Non visual activity");
-        }
-
-        window.setWindowAnimations(R.style.FsDialogAnimation);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(new Color(getContext(), R.attr.colorPrimaryDark).intValue());
-        }
+        prepareWindow(getWindow());
 
         final LinearLayout dialogLayout = new LinearLayout(context);
         dialogLayout.setOrientation(VERTICAL);
@@ -47,7 +35,19 @@ public class FsDialog extends AppCompatDialog implements Dialog {
         dialogLayout.addView(content, new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
 
         super.setContentView(dialogLayout);
+    }
 
+    private void prepareWindow(final Window window) {
+        if (window == null) {
+            throw new IllegalStateException("Non visual activity");
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(new Color(getContext(), R.attr.colorPrimaryDark).intValue());
+        }
+        window.setWindowAnimations(R.style.FsDialogAnimation);
         window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.WHITE));
         window.setGravity(Gravity.CENTER);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
