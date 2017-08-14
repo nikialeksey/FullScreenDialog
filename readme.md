@@ -38,7 +38,7 @@ new DissmissOnActionDialog(
         new FsDialog(
             context, 
             R.style.AppTheme,
-            new FsDialogToolbar(context, getString(R.string.mainFsDialogTitle),
+            new FsDialogToolbar(context, "Title",
                 new FsCloseButton(
                     new SimpleButton(
                         new ClickListener() {
