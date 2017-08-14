@@ -1,18 +1,14 @@
 package com.nikialeksey.fullscreendialog;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.test.espresso.Espresso;
+import android.graphics.drawable.ColorDrawable;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.AppCompatImageButton;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
+import com.nikialeksey.fullscreendialog.buttons.FsActionButton;
+import com.nikialeksey.fullscreendialog.buttons.FsCloseButton;
+import com.nikialeksey.fullscreendialog.buttons.SimpleButton;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,70 +24,59 @@ import static org.junit.Assert.assertThat;
 @RunWith(AndroidJUnit4.class)
 public class FsDialogTest {
 
-    public static class FsDialogTestActivity extends Activity {
-
-        public boolean wasDialogAction = false;
-        public boolean wasDialogClose = false;
-
-        @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            final FrameLayout content = new FrameLayout(this);
-
-            final TextView textView = new TextView(this);
-            textView.setText("show");
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new FsDialog(FsDialogTestActivity.this, R.style.Theme_AppCompat, "Dialog Title", new FsDialogCloseAction() {
-                        @Override
-                        public void onClose(@NonNull final FsDialog dialog) {
-                            wasDialogClose = true;
-                        }
-                    }, "Action", new FsDialogAction() {
-                        @Override
-                        public void onAction(FsDialog dialog) {
-                            dialog.dismiss();
-                            wasDialogAction = true;
-                        }
-                    }, new FrameLayout(FsDialogTestActivity.this)).show();
-                }
-            });
-
-            final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-            lp.gravity = Gravity.CENTER;
-            content.addView(textView, lp);
-
-            setContentView(content);
-        }
-    }
+    private static final String DIALOG_ACTION = "Action";
+    private static final String DIALOG_TITLE = "Dialog Title";
 
     @Rule
-    public ActivityTestRule<FsDialogTestActivity> rule = new ActivityTestRule<>(FsDialogTestActivity.class);
+    public ActivityTestRule<TestActivity> rule = new ActivityTestRule<>(TestActivity.class);
 
     @Test
     public void showFsDialog() {
-        onView(withText("show")).perform(click());
+        onView(withText(FsDialogActivity.SHOW_DIALOG_TEXT)).perform(click());
 
-        onView(withText("Dialog Title")).check(matches(isDisplayed()));
+        onView(withText(DIALOG_TITLE)).check(matches(isDisplayed()));
     }
 
     @Test
     public void actionClicked() {
-        onView(withText("show")).perform(click());
-        onView(withText("Action")).perform(click());
+        onView(withText(FsDialogActivity.SHOW_DIALOG_TEXT)).perform(click());
+        onView(withText(DIALOG_ACTION)).perform(click());
 
         assertThat(rule.getActivity().wasDialogAction, is(true));
     }
 
     @Test
     public void closeClicked() {
-        onView(withText("show")).perform(click());
-        // @todo #18:30m Bad to use class name matcher. Need configure close button in FsDialog constructor
-        onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(click());
+        onView(withText(FsDialogActivity.SHOW_DIALOG_TEXT)).perform(click());
+        // @todo #18:30m Bad to use class name matcher. Need configure close button in
+        // FsDialog constructor
+        onView(ViewMatchers.withClassName(is(AppCompatImageButton.class.getName()))).perform(
+            click());
 
         assertThat(rule.getActivity().wasDialogClose, is(true));
+    }
+
+    public static class TestActivity extends FsDialogActivity {
+
+        public boolean wasDialogAction = false;
+        public boolean wasDialogClose = false;
+
+        @Override
+        public Dialog createDialog() {
+            return new FsDialog(this, R.style.Theme_AppCompat,
+                new FsDialogToolbar(this, DIALOG_TITLE,
+                    new FsCloseButton(new SimpleButton(new ClickListener() {
+                        @Override
+                        public void onClick() {
+                            wasDialogClose = true;
+                        }
+                    }), new ColorDrawable()),
+                    new FsActionButton(new SimpleButton(new ClickListener() {
+                        @Override
+                        public void onClick() {
+                            wasDialogAction = true;
+                        }
+                    }), DIALOG_ACTION)), new FrameLayout(this));
+        }
     }
 }

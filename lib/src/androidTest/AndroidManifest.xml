@@ -7,7 +7,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
 
-        <activity android:name="com.nikialeksey.fullscreendialog.FsDialogTest$FsDialogTestActivity"/>
+        <activity
+            android:name="com.nikialeksey.fullscreendialog.FsDialogTest$TestActivity"/>
+
+        <activity
+            android:name="com.nikialeksey.fullscreendialog.DissmissOnActionDialogTest$TestActivity"/>
+
+        <activity
+            android:name="com.nikialeksey.fullscreendialog.DissmissOnCloseDialogTest$TestActivity"/>
 
     </application>
 
