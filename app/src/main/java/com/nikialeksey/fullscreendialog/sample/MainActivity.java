@@ -28,7 +28,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final FrameLayout content = new FrameLayout(this);
+
+        // @todo #22:30m Think about it, may be create one project with true OOP wrapper for SDK
+        /**
+         * new FrameLayout(
+         *      new CenterInParent(
+         *          new Button(
+         *              "lalala",
+         *              new ShowDialogOnClick(
+         *                  new DissmissOnActionDialog(
+         *                      new DismissOnCloseDialog(
+         new FsDialog(
+         context,
+         R.style.AppTheme,
+         new FsDialogToolbar(
+         context,
+         getString(R.string.mainFsDialogTitle),
+         new FsCloseButton(
+         new SimpleButton(
+         new ClickListener() {
+        @Override public void onClick() {
+        Toast.makeText(context, "Close", Toast.LENGTH_LONG).show();
+        }
+        }),
+         closeIcon),
+         new FsActionButton(
+         new SimpleButton(
+         new ClickListener() {
+        @Override public void onClick() {
+        Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
+        }
+        }),
+         "Action")), content)))))))
+         *
+         *
+         */
 
         final TextView textView =
             new TextView(this, null, android.R.style.TextAppearance_Material_Small);
@@ -77,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
             new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
+
+        final FrameLayout content = new FrameLayout(this);
         content.addView(textView, lp);
 
         setContentView(content);
