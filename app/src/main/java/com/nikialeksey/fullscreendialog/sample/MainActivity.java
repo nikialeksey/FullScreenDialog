@@ -38,28 +38,30 @@ public class MainActivity extends AppCompatActivity {
          *              new ShowDialogOnClick(
          *                  new DissmissOnActionDialog(
          *                      new DismissOnCloseDialog(
-         new FsDialog(
-         context,
-         R.style.AppTheme,
-         new FsDialogToolbar(
-         context,
-         getString(R.string.mainFsDialogTitle),
-         new FsCloseButton(
-         new SimpleButton(
-         new ClickListener() {
-        @Override public void onClick() {
-        Toast.makeText(context, "Close", Toast.LENGTH_LONG).show();
-        }
-        }),
-         closeIcon),
-         new FsActionButton(
-         new SimpleButton(
-         new ClickListener() {
-        @Override public void onClick() {
-        Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
-        }
-        }),
-         "Action")), content)))))))
+         *                          new FsDialog(
+         *                              context,
+         *                              R.style.AppTheme,
+         *                              new FsDialogToolbar(
+         *                                  context,
+         *                                  getString(R.string.mainFsDialogTitle),
+         *                                  new FsCloseButton(
+         *                                      new SimpleButton(
+         *                                          new ClickListener() {
+         *                                              @Override
+         *                                              public void onClick() {
+         *                                                  Toast.makeText(context, "Close", Toast.LENGTH_LONG).show();
+         *                                              }
+         *                                         }),
+         *                                      closeIcon),
+         *                                  new FsActionButton(
+         *                                      new SimpleButton(
+         *                                          new ClickListener() {
+         *                                              @Override
+         *                                              public void onClick() {
+         *                                                  Toast.makeText(context, "Action", Toast.LENGTH_LONG).show();
+         *                                              }
+         *                                          }),
+         *                                      "Action")), content)))))))
          *
          *
          */
