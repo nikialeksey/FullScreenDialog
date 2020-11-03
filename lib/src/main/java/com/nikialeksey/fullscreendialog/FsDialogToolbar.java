@@ -2,9 +2,11 @@ package com.nikialeksey.fullscreendialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.appbar.AppBarLayout;
 import com.nikialeksey.fullscreendialog.buttons.ToolbarButton;
 import com.nikialeksey.fullscreendialog.theme.Color;
 

@@ -3,8 +3,10 @@ package com.nikialeksey.fullscreendialog;
 import android.graphics.drawable.ColorDrawable;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
-import android.support.v7.widget.AppCompatImageButton;
 import android.widget.FrameLayout;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+
 import com.nikialeksey.fullscreendialog.buttons.FsActionButton;
 import com.nikialeksey.fullscreendialog.buttons.FsCloseButton;
 import com.nikialeksey.fullscreendialog.buttons.SimpleButton;

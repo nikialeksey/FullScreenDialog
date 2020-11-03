@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "me.nikialeksey.fullscreendialog.sample"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    compile project(':lib')
-    compile 'com.android.support:appcompat-v7:26.0.1'
+    implementation project(':lib')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 }

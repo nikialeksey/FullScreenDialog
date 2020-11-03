@@ -1,7 +1,7 @@
 package com.nikialeksey.fullscreendialog.buttons;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 public interface ToolbarButton extends Button {
     void addInToolbar(@NonNull Toolbar toolbar);

@@ -4,13 +4,15 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.content.res.AppCompatResources;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+
 import com.nikialeksey.fullscreendialog.ClickListener;
 import com.nikialeksey.fullscreendialog.DismissOnCloseDialog;
 import com.nikialeksey.fullscreendialog.DissmissOnActionDialog;

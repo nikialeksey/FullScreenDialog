@@ -1,26 +1,20 @@
 language: android
 jdk: oraclejdk8
+sudo: required
 env:
   global:
     - ANDROID_TARGET=android-16
     - ANDROID_ABI=armeabi-v7a
-before_install:
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 android:
   components:
   - tools
   - platform-tools
-  - build-tools-26.0.1
-  - android-26
+  - build-tools-30.0.2
+  - android-30
   - extra-android-m2repository
   - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
-  licenses:
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
 script:
-  - ./gradlew build jacocoTestReport assembleAndroidTest
+  - ./gradlew build assembleAndroidTest
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator

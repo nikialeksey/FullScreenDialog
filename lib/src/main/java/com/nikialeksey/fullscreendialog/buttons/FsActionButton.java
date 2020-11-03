@@ -1,8 +1,9 @@
 package com.nikialeksey.fullscreendialog.buttons;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import com.nikialeksey.fullscreendialog.ClickListener;
 
