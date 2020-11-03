@@ -1,7 +1,8 @@
 package com.nikialeksey.fullscreendialog;
 
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 public interface Dialog extends DialogInterface {
 

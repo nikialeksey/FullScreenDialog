@@ -1,9 +1,10 @@
 package com.nikialeksey.fullscreendialog.buttons;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import com.nikialeksey.fullscreendialog.ClickListener;
 

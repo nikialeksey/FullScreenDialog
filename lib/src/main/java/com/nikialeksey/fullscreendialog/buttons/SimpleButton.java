@@ -1,6 +1,7 @@
 package com.nikialeksey.fullscreendialog.buttons;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+
 import com.nikialeksey.fullscreendialog.ClickListener;
 import java.util.ArrayList;
 import java.util.List;

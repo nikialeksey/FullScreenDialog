@@ -2,10 +2,11 @@ package com.nikialeksey.fullscreendialog.theme;
 
 
 import android.content.Context;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 import android.util.TypedValue;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 public class Color {
 
